@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = pd.read_csv("C:/Users/josej/Desktop/vehicles.csv")
+
+# Hacemos un primer grid sin valores, pero en la que se pueden ver ya correlacion entre los diferentes valores.
+# El caso del id, por ejemplo, no tendría mucho sentido, pero lo mantengo para ver los resultados
+fig, ax = plt.subplots(figsize=(10,6))
+sns.heatmap(data.corr(), center=0, cmap='Blues')
+ax.set_title('Multi-Collinearity of Car Attributes')
+
+# Ahora lo hacemmos con valores para ver las correlaciones concretas
+fig, ax = plt.subplots(figsize=(10,6))
+sns.heatmap(data.corr(), center=0, cmap='BrBG', annot=True)
