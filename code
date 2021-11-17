@@ -1,3 +1,4 @@
+# Heatmap a partir de vehicles
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,3 +15,47 @@ ax.set_title('Multi-Collinearity of Car Attributes')
 # Ahora lo hacemmos con valores para ver las correlaciones concretas
 fig, ax = plt.subplots(figsize=(10,6))
 sns.heatmap(data.corr(), center=0, cmap='BrBG', annot=True)
+
+
+# Heatmap a partir de fichero propio
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+data = pd.read_excel("C:/Users/josej/Desktop/Datos precipitacion&horas sol␣Retiro 6.xlsx")
+
+# Hacemos un primer grid sin valores, pero en la que se pueden ver ya la correlacion entre los diferentes valores.
+# Como en el caso de los coches, año, no tendría mucho sentido, pero lo mantengo para ver los resultados
+fig, ax = plt.subplots(figsize=(10,6))
+sns.heatmap(data.corr(), center=0, cmap='Blues')
+ax.set_title('Relacion precipitacion - horas de sol')
+
+# Ahora lo hacemmos con valores para ver las correlaciones concretas
+fig, ax = plt.subplots(figsize=(10,6))
+sns.heatmap(data.corr(), center=0, cmap='BrBG', annot=True)
+
+# Hacemos lo mismo con más variables
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+data = pd.read_excel("C:/Users/josej/Desktop/Datos precipitacion&horas sol␣Retiro (3) - TC.xlsx")
+fig, ax = plt.subplots(figsize=(10,6))
+sns.heatmap(data.corr(), center=0, cmap='Blues')
+ax.set_title('Relacion multivariable clima')
+
+fig, ax = plt.subplots(figsize=(10,6))
+sns.heatmap(data.corr(), center=0, cmap='BrBG', annot=True)
+
+# Y otra forma de representarlo
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib.dates as mdates
+from datetime import datetime
+data = pd.read_excel("C:/Users/josej/Desktop/Datos precipitacion&horas sol␣Retiro (3) - TC.xlsx")
+plt.figure(figsize=(10,10))
+heat_map = sns.heatmap(data.corr(), linewidth = 1 , annot = True)
+plt.title( "HeatMap using Seaborn Method" )
+plt.show()
